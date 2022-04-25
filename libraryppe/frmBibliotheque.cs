@@ -18,9 +18,14 @@ namespace libraryppe
         {
             InitializeComponent();
             FillDataGridViewAll();
+            designApp();
         }
 
+
+
+
         libraryppe.ApiController apiController = new ApiController();
+
 
         string actualCategory;
         const string fiction = "fiction";
@@ -30,8 +35,21 @@ namespace libraryppe
 
 
 
+        // Definition des parametres graphique du Form
+        private void designApp()
+        {
+            dgvBibliotheque.BackgroundColor = Color.FromArgb(25, 35, 57);
+            dgvBibliotheque.GridColor = Color.FromArgb(25, 35, 57);
+            dgvBibliotheque.ForeColor = Color.White;
+            dgvBibliotheque.DefaultCellStyle.BackColor = Color.FromArgb(25, 35, 57);
+            dgvBibliotheque.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(25, 35, 57);
+            dgvBibliotheque.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+        }
 
-        // Remplit le dataGrid avec les tout les livres
+
+
+
+        // Remplissage du dataGrid avec les informations de tout les livres
         public void FillDataGridViewAll()
         {
             actualCategory = "all";
@@ -39,9 +57,8 @@ namespace libraryppe
 
             JArray content = apiController.GetAllBook();
             string tmpDispo;
+
             int tailleTableau = content.Count();
-
-
             for (int i = 0; i<tailleTableau; i++)
             {
                 if (content[i]["disponible"].ToString() == "1")
@@ -54,9 +71,12 @@ namespace libraryppe
                 }
                 dgvBibliotheque.Rows.Add(content[i]["titre"], content[i]["auteur"], content[i]["annee"], content[i]["categorie"], tmpDispo);
             }
-
         }
 
+
+
+
+        // Remplissage du dataGrid avec les informations des livres d'une catégorie
         private void FillDataGridViewCategorie(string categorie)
         {
             actualCategory = categorie;
@@ -65,9 +85,8 @@ namespace libraryppe
             JArray content = apiController.GetBookByCategorie(categorie);
 
             string tmpDispo;
+
             int tailleTableau = content.Count();
-
-
             for (int i = 0; i < tailleTableau; i++)
             {
                 if (content[i]["disponible"].ToString() == "1")
@@ -85,9 +104,7 @@ namespace libraryppe
 
 
 
-
-
-        // Remplir le dataGrid avec les differentes categorie de livre
+        // Remplir le dataGrid avec les differentes categories
         private void buttonAll_Click(object sender, EventArgs e)
         {
             FillDataGridViewAll();
@@ -95,23 +112,24 @@ namespace libraryppe
 
         private void buttonFiction_Click(object sender, EventArgs e)
         {
-            FillDataGridViewCategorie("fiction");
+            FillDataGridViewCategorie(fiction);
         }
 
         private void buttonHorreur_Click(object sender, EventArgs e)
         {
-            FillDataGridViewCategorie("horreur");
+            FillDataGridViewCategorie(horreur);
         }
 
         private void buttonFantasy_Click(object sender, EventArgs e)
         {
-            FillDataGridViewCategorie("fantasy");
+            FillDataGridViewCategorie(fantasy);
         }
 
         private void buttonRomantique_Click(object sender, EventArgs e)
         {
-            FillDataGridViewCategorie("romantique");
+            FillDataGridViewCategorie(romantique);
         }
+
 
 
 
@@ -126,14 +144,13 @@ namespace libraryppe
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                 e.RowIndex >= 0)
             {
-
                 // Recuperation du titre du livre
                 string test = dgvBibliotheque.Rows[e.RowIndex].Cells[0].Value.ToString();
 
                 // Si le livre est disponible :
                 if (dgvBibliotheque.Rows[e.RowIndex].Cells[4].Value.ToString() == disponible )
                 {
-                    // Attribution du livre a un user et changement de la disponible en 0
+                    // Attribution du livre à un user et changement du state de disponible en 0
                     apiController.RentBookUser(test, ApiController.User.mail);
 
                     if (actualCategory == "all")
@@ -166,5 +183,14 @@ namespace libraryppe
                
             }
         }
+
+
+        // Déselection de la première cellule du dataGrid
+        private void dgvBibliotheque_Paint(object sender, PaintEventArgs e)
+        {
+            this.dgvBibliotheque.ClearSelection();
+        }
+
+
     }
 }

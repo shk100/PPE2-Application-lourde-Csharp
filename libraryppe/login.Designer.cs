@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(login));
             this.buttonConnexion = new System.Windows.Forms.Button();
             this.tbMail = new System.Windows.Forms.TextBox();
             this.tbPass = new System.Windows.Forms.TextBox();
@@ -38,24 +39,28 @@
             // 
             // buttonConnexion
             // 
-            this.buttonConnexion.Location = new System.Drawing.Point(172, 268);
+            this.buttonConnexion.BackColor = System.Drawing.Color.Transparent;
+            this.buttonConnexion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonConnexion.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonConnexion.ForeColor = System.Drawing.Color.White;
+            this.buttonConnexion.Location = new System.Drawing.Point(138, 222);
             this.buttonConnexion.Name = "buttonConnexion";
             this.buttonConnexion.Size = new System.Drawing.Size(147, 87);
             this.buttonConnexion.TabIndex = 0;
             this.buttonConnexion.Text = "Connexion";
-            this.buttonConnexion.UseVisualStyleBackColor = true;
+            this.buttonConnexion.UseVisualStyleBackColor = false;
             this.buttonConnexion.Click += new System.EventHandler(this.buttonConnexion_Click);
             // 
             // tbMail
             // 
-            this.tbMail.Location = new System.Drawing.Point(242, 160);
+            this.tbMail.Location = new System.Drawing.Point(244, 105);
             this.tbMail.Name = "tbMail";
             this.tbMail.Size = new System.Drawing.Size(187, 20);
             this.tbMail.TabIndex = 2;
             // 
             // tbPass
             // 
-            this.tbPass.Location = new System.Drawing.Point(242, 205);
+            this.tbPass.Location = new System.Drawing.Point(244, 160);
             this.tbPass.Name = "tbPass";
             this.tbPass.Size = new System.Drawing.Size(187, 20);
             this.tbPass.TabIndex = 3;
@@ -63,41 +68,54 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(243, 144);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(245, 79);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(26, 13);
+            this.label1.Size = new System.Drawing.Size(122, 23);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Mail";
+            this.label1.Text = "Adresse mail";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(239, 189);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(245, 134);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 13);
+            this.label2.Size = new System.Drawing.Size(126, 23);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Pass";
+            this.label2.Text = "Mot de passe";
             // 
             // buttonInscription
             // 
-            this.buttonInscription.Location = new System.Drawing.Point(360, 268);
+            this.buttonInscription.BackColor = System.Drawing.Color.Transparent;
+            this.buttonInscription.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonInscription.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonInscription.ForeColor = System.Drawing.Color.White;
+            this.buttonInscription.Location = new System.Drawing.Point(379, 222);
             this.buttonInscription.Name = "buttonInscription";
             this.buttonInscription.Size = new System.Drawing.Size(147, 87);
             this.buttonInscription.TabIndex = 6;
             this.buttonInscription.Text = "Inscription";
-            this.buttonInscription.UseVisualStyleBackColor = true;
+            this.buttonInscription.UseVisualStyleBackColor = false;
+            this.buttonInscription.Click += new System.EventHandler(this.buttonInscription_Click);
             // 
             // login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(676, 380);
             this.Controls.Add(this.buttonInscription);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbPass);
             this.Controls.Add(this.tbMail);
             this.Controls.Add(this.buttonConnexion);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "login";
             this.Text = "Form1";
             this.ResumeLayout(false);

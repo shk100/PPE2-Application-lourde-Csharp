@@ -23,36 +23,13 @@ namespace libraryppe
         }
 
 
-        /*
-        // Verifie les identifiants de l'user                     A REMETTRE AVANT LA FIN*********************************************
+
+        // Verifie les identifiants de l'user                     
         private void Login()
         {
             libraryppe.ApiController apiController = new ApiController();
             string mail = tbMail.Text;
             string pass = tbPass.Text;
-           if( apiController.LoginApi(mail, pass))
-            {
-                this.Hide();
-                frmMenu formAccueil = new frmMenu();
-                formAccueil.ShowDialog();
-                this.Close();
-            }
-           else
-            {
-                MessageBox.Show("Probleme d'identifiant ou mot de passe");
-            }
-
-        }
-        */
-
-        
-
-        private void Login()
-        {
-            libraryppe.ApiController apiController = new ApiController();
-
-            string mail = "mailfred";
-            string pass = "mdpfred";
             if (apiController.LoginApi(mail, pass))
             {
                 this.Hide();
@@ -60,14 +37,49 @@ namespace libraryppe
                 formAccueil.ShowDialog();
                 this.Close();
             }
+            else
+            {
+                MessageBox.Show("Probleme d'identifiant ou mot de passe");
+            }
 
         }
         
 
+        /*
+        // Connexion automatisé pour les tests de l'application
+        private void Login()
+        {
+            libraryppe.ApiController apiController = new ApiController();
 
+            string mail = "adminMail";
+            string pass = "adminMdp";
+            if (apiController.LoginApi(mail, pass))
+            {
+                this.Hide();
+                frmMenu formAccueil = new frmMenu();
+                formAccueil.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Probleme lors du login");
+            }
+
+        }
+        */
+
+        // Bouton pour lancer l'authentification
         private void buttonConnexion_Click(object sender, EventArgs e)
         {
             Login();
+        }
+
+
+        // Bouton qui ouvre le Form d'inscription 
+        private void buttonInscription_Click(object sender, EventArgs e)
+        {
+            frmInscription formInscri = new frmInscription();
+            formInscri.ShowDialog();
         }
     }
 }

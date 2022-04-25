@@ -18,39 +18,61 @@ namespace libraryppe
         {
             InitializeComponent();
             FillDataGridViewUser();
+            designapp();
         }
 
 
         libraryppe.ApiController apiController = new ApiController();
-       
 
-        private void dgvlou_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        // Définiton des parametres graphique du Form
+        private void designapp()
         {
-
+            dgvLocation1.BackgroundColor = Color.FromArgb(25, 35, 57);
+            dgvLocation1.GridColor = Color.FromArgb(25, 35, 57);
+            dgvLocation1.ForeColor = Color.White;
+            dgvLocation1.DefaultCellStyle.BackColor = Color.FromArgb(25, 35, 57);
+            dgvLocation1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(25, 35, 57);
+            dgvLocation1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
         }
 
+
+        // Remplissage du dataGrid avec les informations des livres
         public void FillDataGridViewUser()
         {
-            this.dgvLocation.Rows.Clear();  // On clear le data grid
+            this.dgvLocation1.Rows.Clear();  // On clear le data grid
             string currentUser = ApiController.User.mail;
 
             JArray content = apiController.GetBookByUser(ApiController.User.mail);
 
             int tailleTableau = content.Count();
-
-
             for (int i = 0; i < tailleTableau; i++)
             {
-                dgvLocation.Rows.Add(content[i]["titre"], content[i]["auteur"], content[i]["annee"], content[i]["categorie"]);
+                dgvLocation1.Rows.Add(content[i]["titre"], content[i]["auteur"], content[i]["annee"], content[i]["categorie"]);
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+
+
+
+
+        private void dgvLocation1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            FillDataGridViewUser();
+            dgvLocation1.ClearSelection();
         }
 
-        private void dgvLocation_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+
+        // Déselection de la première cellule du dataGrid
+        private void dgvLocation1_Paint(object sender, PaintEventArgs e)
+        {
+            this.dgvLocation1.ClearSelection();
+        }
+
+
+        // Gestion du bouton de rendu de livre du dataGrid
+        private void dgvLocation1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
 
@@ -58,7 +80,7 @@ namespace libraryppe
                 e.RowIndex >= 0)
             {
                 // Recuperation du titre du livre
-                string titreLivre = dgvLocation.Rows[e.RowIndex].Cells[0].Value.ToString();
+                string titreLivre = dgvLocation1.Rows[e.RowIndex].Cells[0].Value.ToString();
 
                 // Retour du livre a la bibliotheque et disponibilité sur oui
                 apiController.ReturnBookUser(titreLivre);
@@ -68,6 +90,15 @@ namespace libraryppe
                 // Recharge du dataGrid avec les données update
                 FillDataGridViewUser();
             }
+        }
+
+
+
+
+        // Raffraichissement du dataGrid
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            FillDataGridViewUser();
         }
     }
 }
