@@ -1,6 +1,8 @@
 # PPE2-Application-lourde-Csharp
 Projet final de BTS SIO PPE2 qui est une application lourde C# en Windows Form qui se connecte a une API en Node-JS qui represente une simulation de bibliotheque.
 
+Lien de l'API correspondante au projet : https://github.com/shk100/PPE2-API-NodeJS-Bibliotheque
+
 Dans cette application, il est possible de réaliser plusieurs actions.
 
 - Consulter la liste des livres disponibles ainsi que de pouvoir les louer.
