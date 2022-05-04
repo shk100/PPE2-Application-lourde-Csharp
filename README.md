@@ -3,6 +3,8 @@ Projet final de BTS SIO PPE2 qui est une application lourde C# en Windows Form q
 
 Lien de l'API correspondante au projet : https://github.com/shk100/PPE2-API-NodeJS-Bibliotheque
 
+Lien de documentation de l'application : https://aitslimanimehdi.com/doc/doccsharp.pdf
+
 Dans cette application, il est possible de réaliser plusieurs actions.
 
 - Consulter la liste des livres disponibles ainsi que de pouvoir les louer.
