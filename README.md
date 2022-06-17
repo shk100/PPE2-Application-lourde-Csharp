@@ -19,7 +19,7 @@ Toutes les données de l'utilisateur sont stockées dans la classe User apres l'
 Le fichier ApiController contient toutes les fonctions de requête HTTP vers l'API de l'application.
 
 
-Plusieurs bibliothèques ont été utilisé :
+Plusieurs bibliothèques ont été utilisées :
 
 REST SHARP :
 
